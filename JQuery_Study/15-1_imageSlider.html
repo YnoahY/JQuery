@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script>
+          $(document).ready(function() {
+
+            const width = 460;
+            const height = 300;
+            let current = 0;
+
+            const moveTo =function() {
+              $('.images').animate({
+                left: -current * width
+              }, 1000) //;
+            };
+            const imageLength = $('.slider').find('.image').length; //.안찍음->image  => 버튼 생성부분
+
+            for (let i=0; i<imageLength; i++) {
+                $('<button></button>')
+                .attr('data-position', i)
+                .text(i)
+                .click(function() {
+                    current = $(this).attr('data-position');
+                    moveTo();
+                })
+                .insertBefore('.slider');
+            }
+            $('.slider').css({
+                position: 'relative',
+                width: width, //''
+                height: height,//''
+                overflow: 'hidden'
+            });
+            $('.images').css({
+                position:'absolute',
+                width: width * imageLength,
+            });
+
+            $('.image').css({
+                margin: 0,
+                padding: 0,
+                width: width,//''
+                height: height,//''
+                display: 'block',
+                float: 'left'
+            });
+
+            setInterval(function() {
+                current = current + 1, //;
+                current = current % imageLength;
+                moveTo();
+            }, 3000);
+          });
+        </script>
+    </head>
+    <body>
+      <div class="slider">
+        <div class="images">
+            <img class="image" src="images/stones.jpg" width="460*300" alt="image_0"/>
+            <img class="image" src="images/roses.png" width="460*300" alt="image_2"/>
+            <img class="image" src="images/betta.jpg" width="460*300" alt="image_3"/>
+            <img class="image" src="https://images.unsplash.com/photo-1657562986317-e06e3a6f3023?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80/460x300?text=image_3" />
+          <div class="image">
+              <h1>이미지가 아닌 것</h1>
+              <p>Lorem ipsum dolor sit amet.
+          </div>
+        </div>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+    <head>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+       <script>
+        $(document).ready(function() {
+            $("button.b1").click(function() {
+                $("img").animate( {
+                    width:'300px'
+                });
+            });
+            $("button.b2").click(function() {
+                $("img").animate( {
+                    width: '500px'
+                });
+            });
+            $("button.b3").click(function() {
+                $("img").animate( {
+                    height: '800px'
+                });
+            });
+        });
+       </script>
+       <style>
+         .css_pick {
+            height: 500px;
+            text-align: center;
+        }
+        .css_pick img {
+            width: 200px;
+            margin: auto; /* 가운데 정렬됨 */
+            padding: 20px;
+            display: block;
+        }
+       </style>
+    </head>
+    <body>
+        <div class="css_pick">
+            <p>버튼을 누르면 그림의 크기 변경됨</p>
+            <button class="b1">가로크기 300픽셀</button>
+            <button class="b2">가로크기 500픽셀</button>
+            <button class="b3">세로크기 800픽셀</button>
+            <img name="pick1" src="../JQuery/images/stones.jpg">
+        </div>
+    </body>
+</html>
